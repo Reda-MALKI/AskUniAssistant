@@ -1,7 +1,7 @@
 # AskUniAssistant
 AskUniAssistant
 
-# RAG ON DOCUMENTS – AI Chatbot for University Regulations
+# RAG ON DOCUMENTS – AI Chatbot for University Regulations (University of Louis Pasteur)
 
 ## Overview
 
