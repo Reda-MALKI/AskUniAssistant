@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Réglementations — ULP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8f9fb;
+      color: #1a1a2e;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav {
+      width: 100%;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #e8eaed;
+      background: #fff;
+    }
+
+    .nav-badge {
+      background: #1a3a6e;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .nav-title {
+      font-size: 14px;
+      color: #888;
+      font-weight: 300;
+    }
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 680px;
+      padding: 64px 24px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .hero { text-align: center; }
+
+    .hero h1 {
+      font-size: 26px;
+      font-weight: 400;
+      color: #1a1a2e;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      font-size: 14px;
+      color: #999;
+      font-weight: 300;
+    }
+
+    .search-box {
+      background: #fff;
+      border: 1px solid #e0e3e8;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+
+    textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: #1a1a2e;
+      padding: 20px 20px 12px;
+      resize: none;
+      line-height: 1.6;
+    }
+
+    textarea::placeholder { color: #bbb; }
+
+    .search-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px 14px;
+    }
+
+    .hint { font-size: 11px; color: #ccc; }
+
+    button.ask-btn {
+      background: #1a3a6e;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 9px 20px;
+      cursor: pointer;
+      transition: background 0.18s;
+    }
+
+    button.ask-btn:hover { background: #22488a; }
+
+    .chips-label {
+      font-size: 11px;
+      color: #bbb;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .chips-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .chip {
+      background: #fff;
+      border: 1px solid #e0e3e8;
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-family: 'Inter', sans-serif;
+      color: #666;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .chip:hover { border-color: #1a3a6e; color: #1a3a6e; }
+
+    .answer-wrap {
+      background: #fff;
+      border: 1px solid #e0e3e8;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      display: none;
+      animation: up 0.3s ease;
+    }
+
+    .answer-wrap.show { display: block; }
+
+    .answer-tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1a3a6e;
+      margin-bottom: 14px;
+    }
+
+    .answer-text {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: #333;
+      white-space: pre-wrap;
+    }
+
+    .dots { display: flex; gap: 5px; padding: 4px 0; }
+    .dots span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #1a3a6e; opacity: 0.3;
+      animation: blink 1.2s ease-in-out infinite;
+    }
+    .dots span:nth-child(2) { animation-delay: 0.2s; }
+    .dots span:nth-child(3) { animation-delay: 0.4s; }
+
+    footer {
+      padding: 32px 24px;
+      font-size: 11px;
+      color: #ccc;
+      text-align: center;
+    }
+
+    @keyframes up {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.2; }
+      50%       { opacity: 1; }
+    }
+
+    @media (max-width: 500px) {
+      .hero h1 { font-size: 22px; }
+      nav { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-badge">ULP</span>
+    <span class="nav-title">Université Louis Pasteur — Réglementations</span>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <h1>Posez votre question</h1>
+      <p>Trouvez rapidement l'information dans les réglementations universitaires</p>
+    </div>
+
+    <div class="search-box">
+      <textarea
+        id="question"
+        rows="3"
+        placeholder="Ex : Quelles sont les conditions d'inscription en master ?"
+        onkeydown="handleKey(event)"
+      ></textarea>
+      <div class="search-footer">
+        <span class="hint">Shift + Entrée pour une nouvelle ligne</span>
+        <button class="ask-btn" onclick="askQuestion()">Rechercher</button>
+      </div>
+    </div>
+
+    <div>
+      <p class="chips-label">Questions fréquentes</p>
+      <div class="chips-wrap">
+        <button class="chip" onclick="fill(this)">Conditions de scolarité</button>
+        <button class="chip" onclick="fill(this)">Conditions d'assiduité</button>
+        <button class="chip" onclick="fill(this)">Organisation des examens et évaluations</button>
+        <button class="chip" onclick="fill(this)">Non-respect des conditions de scolarité et/ou d'assiduité</button>
+        <button class="chip" onclick="fill(this)">Fraude (ou tentative de fraude) aux examens</button>
+      </div>
+    </div>
+
+    <div class="answer-wrap" id="answerWrap">
+      <p class="answer-tag">Réponse</p>
+      <div id="loader" class="dots"><span></span><span></span><span></span></div>
+      <p class="answer-text" id="answerText" style="display:none;"></p>
+    </div>
+  </main>
+
+  <footer>© Université Louis Pasteur</footer>
+
+  <script>
+    function fill(el) {
+      document.getElementById('question').value = el.textContent;
+      document.getElementById('question').focus();
+    }
+
+    function handleKey(e) {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); askQuestion(); }
+    }
+
+    function askQuestion() {
+      const q = document.getElementById('question').value.trim();
+      if (!q) return;
+
+      const wrap = document.getElementById('answerWrap');
+      const loader = document.getElementById('loader');
+      const text = document.getElementById('answerText');
+
+      wrap.classList.add('show');
+      loader.style.display = 'flex';
+      text.style.display = 'none';
+      text.textContent = '';
+
+      // ── Connectez votre API RAG ici ──
+      // fetch('/ask', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ question: q })
+      // }).then(r => r.json()).then(d => render(d.answer));
+
+      // Démo
+      fetch("/ask", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ question: q })
+        })
+        .then(response => response.json())
+        .then(data => {
+        render(data.answer);
+        })
+        .catch(error => {
+        render("Erreur lors de la récupération de la réponse.");
+        console.error(error);
+        });
+    }
+
+    function render(answer) {
+      const loader = document.getElementById('loader');
+      const text = document.getElementById('answerText');
+      loader.style.display = 'none';
+      text.style.display = 'block';
+      let i = 0;
+      const iv = setInterval(() => {
+        text.textContent += answer[i++];
+        if (i >= answer.length) clearInterval(iv);
+      }, 10);
+    }
+  </script>
+</body>
+</html>
