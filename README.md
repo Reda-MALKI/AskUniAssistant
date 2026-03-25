@@ -1,4 +1,4 @@
-# AskUniAssistant
+# YourUniversityAssistant
 AskUniAssistant
 ### Important in the requirements.txt file i've specified the right versions to work with different versions could produce errors 
 # RAG ON DOCUMENTS – AI Chatbot for University Regulations (University of Louis Pasteur)
